@@ -1,3 +1,14 @@
+## membersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Associeition
+- belongs_to :group
+- belongs_to :user
+
 # README
 
 This README would normally document whatever steps are necessary to get the
