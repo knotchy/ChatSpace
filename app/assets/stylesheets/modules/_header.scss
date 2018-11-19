@@ -1,0 +1,58 @@
+h2 {
+  font-size: 20px;
+  color: #333333;
+}
+h4 {
+  color: #999999;
+}
+.top-info {
+  background: $light-blue;
+  color: white;
+  text-align: center;
+}
+
+.header{
+  .header-left {
+    background: #253141;
+    height: 120px;
+    width: 300px;
+    color: $side__white;
+    float:left;
+    .header-left__name{
+      font-size: 16px;
+      font-weight: bold;
+      padding:40px 20px 0;
+      display: inline-block;
+    }
+    .header-left__items{
+      display: inline-block;
+      float:right;
+      padding:40px 20px 0;
+      li.item{
+        display: inline-block;
+      }
+    }
+  }
+  .header-right {
+    height: 120px;
+    width: calc(100vw - 300px);
+    border: thin solid #eeeeee;
+    box-sizing: border-box;
+    margin-left:300px;
+    .header__group {
+      padding:35px 40px 0;
+      float:left;
+    }
+    form.header__edit-btn{
+      input{
+        border: none;
+        float: right;
+        margin: 28px 40px;
+        padding: 5px 20px;
+        border: thin solid $light-blue;
+        color:$light-blue;
+      }
+    }
+  }
+}
+
