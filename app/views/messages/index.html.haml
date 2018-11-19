@@ -1,0 +1,49 @@
+.top-info 投稿・登録 情報表示
+
+.header
+  .header-left
+    %h3.header-left__name user name
+    %ul.header-left__items
+      %li.item
+      = link_to{ fa_icon 'pencil-square-o', class: 'icon',style: 'color:white'}
+      %li.item
+      = link_to{ fa_icon 'cog',class: 'icon',style: 'color:white'}
+  .header-right
+    .header__group
+      %h2 sampleグループ
+      %h4 MEMBER: hoge, hoge, hoge
+    %form.header__edit-btn
+      %input{type: 'submit', value: 'Edit'}
+
+.side-bar__index
+  .group_name 左グループ
+  .group_message 最新テキスト
+  .group_name 左グループ
+  .group_message 最新テキスト
+  .group_name 左グループ
+  .group_message 最新テキスト
+  .group_name 左グループ
+  .group_message 最新テキスト
+
+.main_contents
+  .chat_area
+    .chat_block
+    %ul
+      %li.user_name  投稿名
+      %li.date 投稿日時
+      %li.message テキスト
+    %ul
+      %li.user_name  投稿名
+      %li.date 投稿日時
+      %li.message テキスト
+    %ul
+      %li.user_name  投稿名
+      %li.date 投稿日時
+      %li.message テキスト
+  .footer
+    %form
+      %input.form__message{type:'text',placeholder:'type a message'}
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+      %input.form__send-btn{type: 'submit', value: 'Send'}
