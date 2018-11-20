@@ -1,13 +1,14 @@
-.top-info 投稿・登録 情報表示
-
 .header
   .header-left
-    %h3.header-left__name user name
+    %h3.header-left__name
+      =current_user.name
     %ul.header-left__items
       %li.item
-      = link_to{ fa_icon 'pencil-square-o', class: 'icon',style: 'color:white'}
+        = link_to do
+          = link_to{ fa_icon 'pencil-square-o', class: 'icon',style: 'color:white'}
       %li.item
-      = link_to{ fa_icon 'cog',class: 'icon',style: 'color:white'}
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'icon' ,style:'color:white'
   .header-right
     .header__group
       %h2 sampleグループ
