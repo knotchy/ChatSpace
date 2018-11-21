@@ -1,0 +1,8 @@
+.side-bar__index
+  - current_user.groups.each do |group|
+    = link_to group_messages_path(group) do
+      .side-bar__groupboxes
+        .group__name
+          = group.name
+        .group__message{style:'padding-top: 5px;font-size: 11px;'}
+          メッセージはまだありません。
