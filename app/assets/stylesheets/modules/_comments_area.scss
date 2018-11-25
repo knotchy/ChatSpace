@@ -1,22 +1,37 @@
-.chat_area{
+.main_contents{
   background-color: white;
   width: calc(100% - 300px);
-  height: calc(100vh - 200px);
+  max-height: calc(100vh - 200px);
   float:left;
-  .user_name{
-    display: inline-block;
-    padding: 46px 0px 0px 40px;
-    color: $message-color;
-  }
-  .date{
-    display: inline-block;
-    padding: 0 10px;
-    font-size: 12px;
-    color: #999999;
-  }
-  .message{
-    padding: 10px 0px 0px 40px;
-    color: $message-color;
+  overflow: auto;
+  .chat_area{
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    padding: 46px 40px 0;
+    height: calc(100% - 100px - 90px);
+    .user_name{
+      display: inline-block;
+      padding: 46px 0px 0px 40px;
+      color: $message-color;
+    }
+    .date{
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 12px;
+      color: #999999;
+    }
+    .message{
+      padding: 10px 0px 0px 40px;
+      color: $message-color;
+    }
+    .lower-message {
+      margin-top: 10px;
+      &__content {
+        color: #434a54;
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+    }
   }
 }
 
@@ -38,10 +53,13 @@
     &__mask {
       background-color: white;
       float: left;
-      &__image {
+      &__image{
         padding: 0 25px 0 25px;
         line-height: 50px;
         float:right;
+      }
+      .hidden {
+        display: none;
       }
     }
     &__send-btn {
