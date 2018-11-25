@@ -1,11 +1,10 @@
 .main_contents{
   background-color: white;
   width: calc(100% - 300px);
-  max-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
   float:left;
   overflow: auto;
   .chat_area{
-    background-color: #FAFAFA;
     box-sizing: border-box;
     padding: 46px 40px 0;
     height: calc(100% - 100px - 90px);
