@@ -1,7 +1,7 @@
 .main_contents{
   background-color: white;
   width: calc(100% - 300px);
-  min-height: calc(100vh - 200px);
+  height: calc(100vh - 200px);
   float:left;
   overflow: auto;
   .chat_area{
@@ -10,7 +10,7 @@
     height: calc(100% - 100px - 90px);
     .user_name{
       display: inline-block;
-      padding: 46px 0px 0px 40px;
+      padding-left: 40px;
       color: $message-color;
     }
     .date{
