@@ -11,10 +11,17 @@
           = fa_icon 'cog', class: 'icon' ,style:'color:white'
   .header-right
     .header__group
-      %h2 sampleグループ
-      %h4 MEMBER: hoge, hoge, hoge
+      %h2
+        = @group.name
+      .name
+        %h4<
+          MEMBER:
+          - @group.users.each do |user|
+            = user.name
+
     %form.header__edit-btn
-      %input{type: 'submit', value: 'Edit'}
+      = link_to edit_group_path(@group) do
+        %input{type: 'submit', value: 'Edit'}
 
 = render 'shared/side_bar'
 
