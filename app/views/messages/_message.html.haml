@@ -1,9 +1,8 @@
-.chat_block
+.chat_block{"data-message-id": "#{message.id}"}
   .user_name
     = message.user.name
   .date
     = message.created_at.strftime("%Y/%m/%d %H:%M")
-    / = format_posted_time(message.created_at) カリキュラムはヘルパーメソッド？
   .message
     - if message.content.present?
       %p.lower-message__content
