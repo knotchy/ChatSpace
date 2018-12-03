@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   function appendChatMember(user_id,user_name) {
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ user_id }'>
                   <input name='group[user_ids][]' type='hidden' value='${ user_id }'>
                   <p class='chat-group-user__name'>${ user_name }</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
@@ -36,10 +36,7 @@ $(document).on('turbolinks:load', function() {
     })
     .done(function(users) {
       $("#user-search-result").empty();
-      if (input.length === 0) {
-        $("#user-search-result").empty();
-      }
-      else if (users.length !== 0){
+      if (users.length !== 0){
         users.forEach(function(user) {
           appendUser(user);
         });
@@ -54,8 +51,8 @@ $(document).on('turbolinks:load', function() {
   });
 
   $(document).on("click",".chat-group-user__btn--add",function(e) {
-    var user_id = $(this).data('id')
-    var user_name = $(this).data('name')
+    var user_id = $(this).attr('data-user-id')
+    var user_name = $(this).attr('data-user-name')
     appendChatMember(user_id,user_name);
     $('.chat-group-form__input').val('')
     $(this).parent().remove();
