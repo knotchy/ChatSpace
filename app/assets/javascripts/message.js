@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
-    var html = `<div class="chat_block",data-id="#{message.id}">
+    var html = `<div class="chat_block",data-message-id="#{message.id}">
                   <div class="user_name">
                     ${ message.user_name }
                   </div>
@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function() {
                 </div>`
     return html;
   }
+
   $('#new_message').on('submit',function(e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -41,52 +42,32 @@ $(document).on('turbolinks:load', function() {
     });
   })
 
-  function insertMessages(message) {
-    var html = `<div class="chat_block",message-id="#{message.id}">
-                  <div class="user_name">
-                    ${ message.name }
-                  </div>
-                  <div class="date">
-                    ${ message.timestamp }
-                  </div>
-                  <div class="message">
-                    <p class="lower-message__content">
-                      ${ message.content }
-                    </p>
-                  </div>
-                </div>`
-    $('.main_contents').append(html);
-  }
-
-
-  function update() {
-    var last_message_id = $('.chat_block').last().data('message-id');
-    $.ajax({
-      type: 'GET',
-      url: location.href,
-      data: { id: last_message_id },
-      dataType: 'json'
-    })
-    .done(function(messages) {
-      if (messages.length !== 0 ){
-        messages.forEach(function(messages) {
-          var insertMessages = buildHTML(messages);
-          $('.chat_area').append(insertMessages);
-        });
-        $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
-      }
-    })
-    .fail(function(messages) {
-      alert('自動更新が失敗しました');
-    });
-  }
-
-  $(function() {
+  var interval = setInterval(function(){
     if (location.href.match(/\/groups\/\d+\/messages/)) {
-      // setInterval(update,5000);
+      var last_message_id = $('.chat_block').last().data('message-id');
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id: last_message_id },
+        dataType: 'json'
+      })
+      .done(function(data) {
+        if(data.length !== 0 ){
+          console.log(last_message_id);
+          var insertMessages = "";
+          data.forEach(function(message){
+            insertMessages += buildHTML(message);
+            $('.chat_area').append(insertMessages);
+          })
+          $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
+        }
+      })
+      .fail(function(messages) {
+        alert('自動更新が失敗しました');
+      })
     } else {
       clearInterval(interval);
     }
-  });
+  } , 5000);
 });
 
