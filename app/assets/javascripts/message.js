@@ -52,15 +52,12 @@ $(document).on('turbolinks:load', function() {
         dataType: 'json'
       })
       .done(function(data) {
-        if(data.length !== 0 ){
-          console.log(last_message_id);
-          var insertMessages = "";
-          data.forEach(function(message){
-            insertMessages += buildHTML(message);
-            $('.chat_area').append(insertMessages);
-          })
-          $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
-        }
+        var insertMessages = "";
+        data.forEach(function(message){
+          insertMessages += buildHTML(message);
+          $('.chat_area').append(insertMessages);
+        })
+        $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
       })
       .fail(function(messages) {
         alert('自動更新が失敗しました');
