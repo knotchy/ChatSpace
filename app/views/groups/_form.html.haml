@@ -24,13 +24,13 @@
       = f.label "チャットメンバー",class: 'chat-group-form__label', for: "chat_group_チャットメンバー"
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        - group.users.each do |user|
+        - group.users.each do |member|
           #chat-group-users
             #chat-group-user-22.chat-group-user.clearfix.js-chat-member
-              = f.hidden_field :group_user, name: "group[user_ids][]", value:user.id
+              = f.hidden_field :group_user, name: "group[user_ids][]", value:member.id
               %p.chat-group-user__name
-                = user.name
-              - unless user.name == current_user.name
+                = member.name
+              - unless member.name == current_user.name
                 %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
 
   .chat-group-form__field.clearfix

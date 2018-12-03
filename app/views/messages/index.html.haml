@@ -16,8 +16,8 @@
       .name
         %h4<
           MEMBER:
-          - @group.users.each do |user|
-            = user.name + "　"
+          - @group.users.each do |member|
+            = member.name + "　"
 
     %form.header__edit-btn
       = link_to edit_group_path(@group) do
