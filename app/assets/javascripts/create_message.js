@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message_data) {
-    var html = `<div class="chat_block">
+    var html = `<div class="chat_block",data-id="#{message.id}">
                   <div class="user_name">
                     ${ message_data.user_name }
                   </div>
