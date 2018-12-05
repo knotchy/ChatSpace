@@ -1,18 +1,18 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
-    var html = `<div class="chat_block",data-message-id="#{message.id}">
-                  <div class="user_name">
-                    ${ message.user_name }
-                  </div>
-                  <div class="date">
-                    ${ message.timestamp }
-                  </div>
-                  <div class="message">
-                    <p class="lower-message__content">
-                      ${ message.content }
-                    </p>
-                  </div>
-                </div>`
+    var html = '<div class="chat_block",data-message-id=' + message.id + '">'+
+                  '<div class="user_name">'+
+                    + message.user_name +
+                  '</div>'+
+                  '<div class="date">'+
+                    + message.timestamp +
+                  '</div>'+
+                  '<div class="message">'+
+                    '<p class="lower-message__content">'+
+                      + message.content +
+                    '</p>'+
+                  '</div>'+
+                '</div>';
     return html;
   }
 
