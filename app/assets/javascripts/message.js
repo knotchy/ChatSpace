@@ -1,19 +1,28 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
-    var html = '<div class="chat_block",data-message-id=' + message.id + '">'+
-                  '<div class="user_name">'+
-                    + message.user_name +
-                  '</div>'+
-                  '<div class="date">'+
-                    + message.timestamp +
-                  '</div>'+
-                  '<div class="message">'+
-                    '<p class="lower-message__content">'+
-                      + message.content +
-                    '</p>'+
-                  '</div>'+
-                '</div>';
+    var imageUrl = message.image ? `<img class="lower-message__image" src="${message.image}"` : ''
+    var text = message.text ? `${message.text}` : ''
+    var html = `<div class="chat_block",data-id="#{message.id}">
+                  <div class="user_name">
+                    ${ message.user_name }
+                  </div>
+                  <div class="date">
+                    ${ message.timestamp }
+                  </div>
+                  <div class="message">
+                    <p class="lower-message__content">
+                      ${ text }
+                    </p>
+                  </div>
+                  </div>
+                    ${ imageUrl }
+                  </div>
+                </div>`
     return html;
+  }
+
+  function Scroll(){
+    $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
   }
 
   $('#new_message').on('submit',function(e) {
@@ -32,7 +41,7 @@ $(document).on('turbolinks:load', function() {
       var html = buildHTML(message_data);
       $('.chat_area').append(html)
       $('.form__message').val('')
-      $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
+      Scroll()
     })
     .fail(function() {
       alert('メッセージを入力してください。');
@@ -57,7 +66,7 @@ $(document).on('turbolinks:load', function() {
           insertMessages += buildHTML(message);
           $('.chat_area').append(insertMessages);
         })
-        $('.main_contents').animate({scrollTop: $('.main_contents')[0].scrollHeight}, 'normal', 'swing');
+        Scroll()
       })
       .fail(function(messages) {
         alert('自動更新が失敗しました');
